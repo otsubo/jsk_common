@@ -194,6 +194,10 @@ class DataCollectionServer(object):
             bridge = cv_bridge.CvBridge()
             depth = bridge.imgmsg_to_cv2(msg)
             dump_ndarray(filename, depth)
+        elif savetype == 'DepthImage_png':
+            bridge = cv_bridge.CvBridge()
+            img = bridge.imgmsg_to_cv2(msg, '16UC1')
+            dump_ndarray(filename, img)
         elif savetype == 'LabelImage':
             bridge = cv_bridge.CvBridge()
             label = bridge.imgmsg_to_cv2(msg)
